@@ -1,0 +1,47 @@
+plugins {
+    id "com.github.hierynomus.license" version "0.12.0"
+}
+
+apply plugin: "com.android.application"
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.2"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude "META-INF/NOTICE"
+        exclude "META-INF/LICENSE"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+}
+
+license {
+    header rootProject.file("misc/HEADER")
+    strictCheck true
+}
+
+ext {
+    android_support_library = "26.1.0"
+}
+
+dependencies {
+    implementation "com.feedhenry:fh-android-sdk:4.0.0"
+    implementation "com.android.support:appcompat-v7:$android_support_library"
+    implementation "com.android.support:design:$android_support_library"
+}
